@@ -1,0 +1,52 @@
+Code Summary: ATM Transaction System
+
+This Python script implements an **ATM transaction system** using a MySQL database to handle various banking operations. The system includes functionalities for account creation, authentication, and financial transactions. Below is an outline of its key features:
+
+1. Database Connection:
+    The script connects to a MySQL database named `ATM_SYS` using the `mysql.connector` module.
+    Tables used:
+    `ATM_ACC_DETAIL`: Stores account details.
+    `ATM`: Tracks deposit and withdrawal transactions.
+
+2. Functionalities:
+    Account Creation (`create_acc`)
+      Prompts the user to input personal details (e.g., name, CNIC, age, city).
+      Allows the user to set an account number and a 4-digit PIN.
+      Saves the details in the `ATM_ACC_DETAIL` table.
+   Authentication (`login`)**
+      Verifies user credentials using the account number and PIN.
+      Grants access to the main menu upon successful authentication.
+   Main Menu (`account_access_main_menu`)
+      Provides options for:
+       1. Withdraw cash
+       2. Deposit cash
+       3. Check balance
+       4. View account details
+       5. Check transaction history
+       6. Logout
+   Withdraw Money (`withdraw_def`)
+      Offers predefined withdrawal amounts or a custom amount.
+      Updates the `ATM` table with withdrawal details and timestamps.
+   Deposit Money (`deposit_def`)
+      Accepts a deposit amount from the user.
+      Logs the transaction in the `ATM` table.
+   Check Balance (`balance`)
+      Computes the balance by summing deposits and subtracting withdrawals for the account.
+   View Transactions (`transactions`)
+      Displays withdrawal or deposit history for the account.
+   View Account Details (`acc_details`)
+      Fetches and displays user information from the `ATM_ACC_DETAIL` table.
+
+3. Program Flow:
+      The program begins by displaying a welcome message (`begin`) and prompts the user to:
+      Create a new account.
+      Login to an existing account.
+      After login, users can navigate through the main menu to perform banking operations.
+
+4. Highlights:
+      Real-time Transaction Logging: Transactions include a timestamp (`NOW()`).
+      Interactive Menus: The script provides clear prompts and options for users.
+      Error Handling: Ensures invalid inputs are handled with appropriate messages.
+      Scalability: Can be extended with features like account closure (`close_acc`) or additional security measures.
+
+This system is an excellent starting point for understanding Python-MySQL integration and implementing real-world banking functionalities.
