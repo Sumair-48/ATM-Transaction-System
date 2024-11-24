@@ -47,6 +47,21 @@ SELECT Acc_Id AS Acc_num,SUM(Deposit) - SUM(Withdraw) AS Difference
 FROM ATM
 GROUP BY Acc_Id;
 
+-- Update the balance of Existing costumer:
+
+UPDATE AccountDifferences ad
+SET Difference = (
+    SELECT IFNULL(SUM(Deposit), 0) - IFNULL(SUM(Withdraw), 0)
+    FROM ATM
+    WHERE ATM.Acc_Id = ad.Acc_num
+);
+
+-- To Avoid Duplication:
+
+TRUNCATE TABLE AccountDifferences;
+
+-- Select Statements:
+
 SELECT * FROM accountdifferences;
 
 SELECT * FROM atm_acc_detail;
